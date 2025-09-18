@@ -5,6 +5,9 @@ FROM centos:7
 RUN sed -i 's|mirrorlist=|#mirrorlist=|g' /etc/yum.repos.d/CentOS-*.repo && \
     sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*.repo
 
+# ぱっけ更新
+RUN yum update -y && yum clean all
+    
 # yumでepel-releaseとnginxをインストール
 RUN yum -y install epel-release && \
     yum -y install nginx && \
